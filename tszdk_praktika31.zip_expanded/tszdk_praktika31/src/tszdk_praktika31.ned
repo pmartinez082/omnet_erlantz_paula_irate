@@ -2,6 +2,7 @@ package tszdk_praktika3;
 
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.ethernet.Eth10M;
+
 import inet.node.ethernet.EthernetSwitch;
 import inet.node.inet.MulticastRouter;
 import inet.node.inet.Router;
@@ -19,25 +20,38 @@ channel Eth100MLong extends Eth100M
 
 channel Core200G extends ned.DatarateChannel
 {
-    datarate = 200Gbps;
-    delay = 5us;
+    datarate = 100Mbps;  // keep throughput
+   	delay = uniform(4.7us, 5.1us); // mean ~4.9us with ±0.2us jitter
 }
+
 
 channel Core300G extends ned.DatarateChannel
 {
-    datarate = 300Gbps;
-    delay = 5us;
+    datarate = 100Mbps;
+     delay = uniform(4.7us, 5.1us); // mean ~4.9us with ±0.2us jitter
 
 }
 channel Core100G extends ned.DatarateChannel
 {
-    datarate = 100Gbps;
-    delay = 5us;
+    datarate = 100Mbps;
+     delay = uniform(4.7us, 5.1us); // mean ~4.9us with ±0.2us jitter
+}
+
+
+channel ONT_Rout_Eth_PC extends ned.DatarateChannel
+{
+    datarate = 10Mbps;
+    delay = uniform(2ms, 3ms);
 
 }
 
 
+//channel ONT_Rout_Eth_PC extends ned.DatarateChannel
+///{
+   // datarate = 10Mbps;
+    //delay = uniform(4ms, 5ms);
 
+//}
 
 
 
@@ -406,18 +420,18 @@ network tszdk_praktika2
         // =======================
         auzoa_6switch1.ethg++ <--> Core200G <--> auzoa_16router.ethg++;
         auzoa_6switch2.ethg++ <--> Core200G <--> auzoa_16router.ethg++;
-        auzoa_6lan2host2.ethg++ <--> Core200G <--> auzoa_6switch2.ethg++;
-        auzoa_6lan2host3.ethg++ <--> Core200G <--> auzoa_6switch2.ethg++;
-        auzoa_6lan2host1.ethg++ <--> Core200G <--> auzoa_6switch2.ethg++;
-        auzoa_6lan1host2.ethg++ <--> Core200G <--> auzoa_6switch1.ethg++;
-        auzoa_6lan1host1.ethg++ <--> Core200G <--> auzoa_6switch1.ethg++;
-        auzoa_6lan1host3.ethg++ <--> Core200G <--> auzoa_6switch1.ethg++;
-        auzoa_1lan1host1.ethg++ <--> Core200G <--> auzoa_1switch1.ethg++;
-        auzoa_1lan1host2.ethg++ <--> Core200G <--> auzoa_1switch1.ethg++;
-        auzoa_1lan1host3.ethg++ <--> Core200G <--> auzoa_1switch1.ethg++;
-        auzoa_1lan2host2.ethg++ <--> Core200G <--> auzoa_1switch2.ethg++;
-        auzoa_1lan2host3.ethg++ <--> Core200G <--> auzoa_1switch2.ethg++;
-        auzoa_1lan2host1.ethg++ <--> Core200G <--> auzoa_1switch2.ethg++;
+        auzoa_6lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_6switch2.ethg++;
+        auzoa_6lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_6switch2.ethg++;
+        auzoa_6lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_6switch2.ethg++;
+        auzoa_6lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_6switch1.ethg++;
+        auzoa_6lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_6switch1.ethg++;
+        auzoa_6lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_6switch1.ethg++;
+        auzoa_1lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_1switch1.ethg++;
+        auzoa_1lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_1switch1.ethg++;
+        auzoa_1lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_1switch1.ethg++;
+        auzoa_1lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_1switch2.ethg++;
+        auzoa_1lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_1switch2.ethg++;
+        auzoa_1lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_1switch2.ethg++;
         auzoa_1switch1.ethg++ <--> Core200G <--> auzoa_16router.ethg++;
         auzoa_1switch2.ethg++ <--> Core200G <--> auzoa_16router.ethg++;
 
@@ -426,20 +440,20 @@ network tszdk_praktika2
         // =======================
         auzoa_8switch1.ethg++ <--> Core200G <--> auzoa_78router.ethg++;
         auzoa_8switch2.ethg++ <--> Core200G <--> auzoa_78router.ethg++;
-        auzoa_8lan2host2.ethg++ <--> Core200G <--> auzoa_8switch2.ethg++;
-        auzoa_8lan2host3.ethg++ <--> Core200G <--> auzoa_8switch2.ethg++;
-        auzoa_8lan2host1.ethg++ <--> Core200G <--> auzoa_8switch2.ethg++;
-        auzoa_8switch1.ethg++ <--> Core200G <--> auzoa_8lan1host1.ethg++;
-        auzoa_8lan1host2.ethg++ <--> Core200G <--> auzoa_8switch1.ethg++;
-        auzoa_8lan1host3.ethg++ <--> Core200G <--> auzoa_8switch1.ethg++;
+        auzoa_8lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_8switch2.ethg++;
+        auzoa_8lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_8switch2.ethg++;
+        auzoa_8lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_8switch2.ethg++;
+        auzoa_8switch1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_8lan1host1.ethg++;
+        auzoa_8lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_8switch1.ethg++;
+        auzoa_8lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_8switch1.ethg++;
         auzoa_7switch2.ethg++ <--> Core200G <--> auzoa_78router.ethg++;
         auzoa_7switch1.ethg++ <--> Core200G <--> auzoa_78router.ethg++;
-        auzoa_7lan1host1.ethg++ <--> Core200G <--> auzoa_7switch1.ethg++;
-        auzoa_7lan1host2.ethg++ <--> Core200G <--> auzoa_7switch1.ethg++;
-        auzoa_7lan1host3.ethg++ <--> Core200G <--> auzoa_7switch1.ethg++;
-        auzoa_7lan2host1.ethg++ <--> Core200G <--> auzoa_7switch2.ethg++;
-        auzoa_7lan2host3.ethg++ <--> Core200G <--> auzoa_7switch2.ethg++;
-        auzoa_7lan2host2.ethg++ <--> Core200G <--> auzoa_7switch2.ethg++;
+        auzoa_7lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_7switch1.ethg++;
+        auzoa_7lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_7switch1.ethg++;
+        auzoa_7lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_7switch1.ethg++;
+        auzoa_7lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_7switch2.ethg++;
+        auzoa_7lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_7switch2.ethg++;
+        auzoa_7lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_7switch2.ethg++;
 
         // =======================
         // Auzoa_45 (BegoñaIbaiondo)
@@ -448,20 +462,20 @@ network tszdk_praktika2
         auzoa_5switch3.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
         auzoa_5switch2.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
         auzoa_5switch1.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
-        auzoa_5lan2host1.ethg++ <--> Core100G <--> auzoa_5switch2.ethg++;
-        auzoa_5lan2host3.ethg++ <--> Core100G <--> auzoa_5switch2.ethg++;
-        auzoa_5lan2host2.ethg++ <--> Core100G <--> auzoa_5switch2.ethg++;
-        auzoa_5switch3.ethg++ <--> Core100G <--> auzoa_5lan3host3.ethg++;
-        auzoa_5switch3.ethg++ <--> Core100G <--> auzoa_5lan3host2.ethg++;
-        auzoa_5lan1host1.ethg++ <--> Core100G <--> auzoa_5switch1.ethg++;
-        auzoa_5lan1host3.ethg++ <--> Core100G <--> auzoa_5switch1.ethg++;
-        auzoa_5lan1host2.ethg++ <--> Core100G <--> auzoa_5switch1.ethg++;
-        auzoa_4lan2host1.ethg++ <--> Core100G <--> auzoa_4switch2.ethg++;
-        auzoa_4lan2host3.ethg++ <--> Core100G <--> auzoa_4switch2.ethg++;
-        auzoa_4lan2host2.ethg++ <--> Core100G <--> auzoa_4switch2.ethg++;
-        auzoa_4lan1host2.ethg++ <--> Core100G <--> auzoa_4switch1.ethg++;
-        auzoa_4lan1host3.ethg++ <--> Core100G <--> auzoa_4switch1.ethg++;
-        auzoa_4lan1host1.ethg++ <--> Core100G <--> auzoa_4switch1.ethg++;
+        auzoa_5lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5switch2.ethg++;
+        auzoa_5lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5switch2.ethg++;
+        auzoa_5lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5switch2.ethg++;
+        auzoa_5switch3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5lan3host3.ethg++;
+        auzoa_5switch3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5lan3host2.ethg++;
+        auzoa_5lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5switch1.ethg++;
+        auzoa_5lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5switch1.ethg++;
+        auzoa_5lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5switch1.ethg++;
+        auzoa_4lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_4switch2.ethg++;
+        auzoa_4lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_4switch2.ethg++;
+        auzoa_4lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_4switch2.ethg++;
+        auzoa_4lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_4switch1.ethg++;
+        auzoa_4lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_4switch1.ethg++;
+        auzoa_4lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_4switch1.ethg++;
         auzoa_4switch2.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
         auzoa_4switch1.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
 
@@ -472,18 +486,18 @@ network tszdk_praktika2
         auzoa_3switch2.ethg++ <--> Core200G <--> auzoa_23router.ethg++;
         auzoa_2switch1.ethg++ <--> Core200G <--> auzoa_23router.ethg++;
         auzoa_2switch2.ethg++ <--> Core200G <--> auzoa_23router.ethg++;
-        auzoa_3lan1host1.ethg++ <--> Core200G <--> auzoa_3switch1.ethg++;
-        auzoa_3lan1host3.ethg++ <--> Core200G <--> auzoa_3switch1.ethg++;
-        auzoa_3lan1host2.ethg++ <--> Core200G <--> auzoa_3switch1.ethg++;
-        auzoa_2lan2host2.ethg++ <--> Core200G <--> auzoa_2switch2.ethg++;
-        auzoa_2lan2host3.ethg++ <--> Core200G <--> auzoa_2switch2.ethg++;
-        auzoa_2lan2host1.ethg++ <--> Core200G <--> auzoa_2switch2.ethg++;
-        auzoa_2lan1host1.ethg++ <--> Core200G <--> auzoa_2switch1.ethg++;
-        auzoa_2lan1host3.ethg++ <--> Core200G <--> auzoa_2switch1.ethg++;
-        auzoa_2lan1host2.ethg++ <--> Core200G <--> auzoa_2switch1.ethg++;
-        auzoa_3lan2host1.ethg++ <--> Core200G <--> auzoa_3switch2.ethg++;
-        auzoa_3lan2host2.ethg++ <--> Core200G <--> auzoa_3switch2.ethg++;
-        auzoa_3lan2host3.ethg++ <--> Core200G <--> auzoa_3switch2.ethg++;
+        auzoa_3lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_3switch1.ethg++;
+        auzoa_3lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_3switch1.ethg++;
+        auzoa_3lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_3switch1.ethg++;
+        auzoa_2lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_2switch2.ethg++;
+        auzoa_2lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_2switch2.ethg++;
+        auzoa_2lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_2switch2.ethg++;
+        auzoa_2lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_2switch1.ethg++;
+        auzoa_2lan1host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_2switch1.ethg++;
+        auzoa_2lan1host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_2switch1.ethg++;
+        auzoa_3lan2host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_3switch2.ethg++;
+        auzoa_3lan2host2.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_3switch2.ethg++;
+        auzoa_3lan2host3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_3switch2.ethg++;
 
         // =======================
         // BackboneRouters (200G)

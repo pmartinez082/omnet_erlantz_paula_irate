@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <analysis version="2">
     <inputs>
-        <input pattern="/tszdk_praktika3/src/results/General-*.vec"/>
-        <input pattern="/tszdk_praktika3/src/results/General-*.sca"/>
         <input pattern="results/General-#0.vec"/>
-        <input pattern="results/General-#0.sca"/>
     </inputs>
     <charts>
-        <chart createdWith="" icon="icons/full/obj/linechart.png" id="751055042" name="data rate in tszdk_praktika2.area3lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
+        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1040134379" name="data rate in tszdk_praktika2.area3lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
@@ -637,7 +634,7 @@ utils.export_data_if_needed(df, props)
             <property name="matplotlibrc" value=""/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/linechart.png" id="418640385" name="data rate in tszdk_praktika2.area3lan1host2.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
+        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1727947179" name="data rate in tszdk_praktika2.area3lan1host2.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
@@ -1267,7 +1264,7 @@ utils.export_data_if_needed(df, props)
             <property name="matplotlibrc" value=""/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1475623382" name="data rate in tszdk_praktika2.area1lan1host2.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
+        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1308272662" name="data rate in tszdk_praktika2.area1lan1host2.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
@@ -1897,7 +1894,7 @@ utils.export_data_if_needed(df, props)
             <property name="matplotlibrc" value=""/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/linechart.png" id="2016928268" name="data rate in tszdk_praktika2.area1lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
+        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1911660670" name="data rate in tszdk_praktika2.area1lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
@@ -2527,7 +2524,7 @@ utils.export_data_if_needed(df, props)
             <property name="matplotlibrc" value=""/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1173903692" name="data rate in tszdk_praktika2.area1lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
+        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1151550680" name="data rate in tszdk_praktika2.area1lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
@@ -3157,7 +3154,7 @@ utils.export_data_if_needed(df, props)
             <property name="matplotlibrc" value=""/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/linechart.png" id="1179948824" name="mean bit life time per packet in tszdk_praktika2.area3lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
+        <chart createdWith="" icon="icons/full/obj/linechart.png" id="560416033" name="mean bit life time per packet in tszdk_praktika2.area3lan3host3.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
@@ -3787,7 +3784,7 @@ utils.export_data_if_needed(df, props)
             <property name="matplotlibrc" value=""/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/linechart.png" id="369467120" name="data rate in tszdk_praktika2.area2lan1host2.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
+        <chart createdWith="" icon="icons/full/obj/linechart.png" id="608502727" name="data rate in tszdk_praktika2.area2lan1host2.app[0].sink" resultTypes="" template="linechart_mpl" type="MATPLOTLIB">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
@@ -4417,7 +4414,7 @@ utils.export_data_if_needed(df, props)
             <property name="matplotlibrc" value=""/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="1034901566" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
+        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="1970336633" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
             <script><![CDATA[from omnetpp.scave import results, chart, utils
 
 # get chart properties
@@ -4975,7 +4972,7 @@ Show over_underflow cell?
             <property name="image_export_width" value="6"/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="312482180" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (2)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
+        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="1219654168" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (2)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
             <script><![CDATA[from omnetpp.scave import results, chart, utils
 
 # get chart properties
@@ -5533,7 +5530,7 @@ Show over_underflow cell?
             <property name="image_export_width" value="6"/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="417593409" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (3)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
+        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="927860255" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (3)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
             <script><![CDATA[from omnetpp.scave import results, chart, utils
 
 # get chart properties
@@ -6091,7 +6088,7 @@ Show over_underflow cell?
             <property name="image_export_width" value="6"/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="1067821516" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (4)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
+        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="245327842" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (4)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
             <script><![CDATA[from omnetpp.scave import results, chart, utils
 
 # get chart properties
@@ -6649,7 +6646,7 @@ Show over_underflow cell?
             <property name="image_export_width" value="6"/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="602736709" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (5)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
+        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="1053269311" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (5)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
             <script><![CDATA[from omnetpp.scave import results, chart, utils
 
 # get chart properties
@@ -7207,7 +7204,7 @@ Show over_underflow cell?
             <property name="image_export_width" value="6"/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="1905482044" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (6)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
+        <chart createdWith="" icon="icons/full/obj/histogramchart.png" id="1083437619" name="histograma packet length tszdk_praktika2.area2lan1host2.app[0].source (6)" resultTypes="" template="histogramchart_native" type="HISTOGRAM">
             <script><![CDATA[from omnetpp.scave import results, chart, utils
 
 # get chart properties
@@ -7765,7 +7762,7 @@ Show over_underflow cell?
             <property name="image_export_width" value="6"/>
             <property name="include_fields" value="false"/>
         </chart>
-        <chart createdWith="OMNeT++ 6.3.0.251110-bb3d6a4731" icon="icons/full/obj/linechart.png" id="595177187" name="incoming datarate in tszdk_praktika2.auzoa_1lan1host1.eth[0].queue" resultTypes="vector" template="linechart_native" type="LINE">
+        <chart createdWith="OMNeT++ 6.3.0.251110-bb3d6a4731" icon="icons/full/obj/linechart.png" id="751131774" name="incoming datarate in tszdk_praktika2.auzoa_1lan1host1.eth[0].queue" resultTypes="vector" template="linechart_native" type="LINE">
             <script><![CDATA[import math
 from omnetpp.scave import results, chart, utils
 
