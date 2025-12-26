@@ -11,6 +11,10 @@ import inet.node.ethernet.Eth100M;
 import inet.node.inet.WirelessHost;
 import inet.node.wireless.AccessPoint;
 import inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
+import ned.IdealChannel;
+import inet.node.inet.AccessPoint;
+
+
 
 channel Eth100MLong extends Eth100M
 {
@@ -19,27 +23,33 @@ channel Eth100MLong extends Eth100M
 
 channel Core200G extends ned.DatarateChannel
 {
-    datarate = 200Gbps;
-    delay = 5us;
+    datarate = 100Mbps;
+    delay = uniform(4.7us, 5.1us);
 }
 
 channel Core300G extends ned.DatarateChannel
 {
-    datarate = 300Gbps;
-    delay = 5us;
+    datarate = 300Mbps;
+    delay = uniform(4.7us, 5.1us);
 
 }
 channel Core100G extends ned.DatarateChannel
 {
-    datarate = 100Gbps;
-    delay = 5us;
+    datarate = 100Mbps;
+    delay = uniform(4.7us, 5.1us);
 
 }
+channel ONT_Rout_Eth_PC extends ned.DatarateChannel
+{
+    datarate = 100Mbps;
+    delay = uniform(1.5ms, 2.5ms);
 
-
-
-
-
+}
+channel ONT_Rout_WiFi_PC extends ned.DatarateChannel
+{
+    datarate = 100Mbps;
+    delay = uniform(4ms, 6ms);
+}
 
 
 network tszdk_praktika2
@@ -244,14 +254,14 @@ network tszdk_praktika2
             @display("p=2990.8613,2506.5115");
         }
 
-       // auzoa_45AP: AccessPoint {
-         //   @display("p=2853.6287,561.03876");
-       // }
-       // auzoa_45lan3host1: WirelessHost {
-       //     @display("p=3011.0425,795.14124");
-       // }
-        //auzoa_45lan3host2: WirelessHost {
-        //    @display("p=3136.1663,548.93");
+        //auzoa_45AP: AccessPoint {
+        //    @display("p=2206,2994");
+        //}
+        //auzoa_5wlan1host1: WirelessHost {
+        //    @display("p=2092,3226");
+        //}
+        //auzoa_5wlan1host2: WirelessHost {
+        //    @display("p=1889,3033");
         //}
 
         // =======================
@@ -444,7 +454,7 @@ network tszdk_praktika2
         // =======================
         // Auzoa_45 (BegoñaIbaiondo)
         // =======================
-        auzoa_5switch3.ethg++ <--> Core100G <--> auzoa_5lan3host1.ethg++;
+        auzoa_5switch3.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5lan3host1.ethg++;
         auzoa_5switch3.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
         auzoa_5switch2.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
         auzoa_5switch1.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
@@ -453,9 +463,9 @@ network tszdk_praktika2
         auzoa_5lan2host2.ethg++ <--> Core100G <--> auzoa_5switch2.ethg++;
         auzoa_5switch3.ethg++ <--> Core100G <--> auzoa_5lan3host3.ethg++;
         auzoa_5switch3.ethg++ <--> Core100G <--> auzoa_5lan3host2.ethg++;
-        auzoa_5lan1host1.ethg++ <--> Core100G <--> auzoa_5switch1.ethg++;
+        auzoa_5lan1host1.ethg++ <--> ONT_Rout_Eth_PC <--> auzoa_5switch1.ethg++;
         auzoa_5lan1host3.ethg++ <--> Core100G <--> auzoa_5switch1.ethg++;
-        auzoa_5lan1host2.ethg++ <--> Core100G <--> auzoa_5switch1.ethg++;
+        auzoa_5lan1host2.ethg++ <--> ONT_Rout_WiFi_PC <--> auzoa_5switch1.ethg++;
         auzoa_4lan2host1.ethg++ <--> Core100G <--> auzoa_4switch2.ethg++;
         auzoa_4lan2host3.ethg++ <--> Core100G <--> auzoa_4switch2.ethg++;
         auzoa_4lan2host2.ethg++ <--> Core100G <--> auzoa_4switch2.ethg++;
@@ -489,14 +499,14 @@ network tszdk_praktika2
         // BackboneRouters (200G)
         // =======================
         backbonerouter1.ethg++ <--> Core200G <--> auzoa_78router.ethg++;
-        auzoa_16router.ethg++  <--> Core200G <--> backbonerouter1.ethg++;
-        auzoa_45router.ethg++  <--> Core200G <--> backbonerouter1.ethg++;
-        auzoa_23router.ethg++  <--> Core200G <--> backbonerouter1.ethg++;
+        auzoa_16router.ethg++ <--> Core200G <--> backbonerouter1.ethg++;
+        auzoa_45router.ethg++ <--> Core200G <--> backbonerouter1.ethg++;
+        auzoa_23router.ethg++ <--> Core200G <--> backbonerouter1.ethg++;
 
-        auzoa_45router.ethg++  <--> Core200G <--> backbonerouter2.ethg++;
-        auzoa_78router.ethg++  <--> Core200G <--> backbonerouter2.ethg++;
-        auzoa_23router.ethg++  <--> Core200G <--> backbonerouter2.ethg++;
-        auzoa_16router.ethg++  <--> Core200G <--> backbonerouter2.ethg++;
+        auzoa_45router.ethg++ <--> Core200G <--> backbonerouter2.ethg++;
+        auzoa_78router.ethg++ <--> Core200G <--> backbonerouter2.ethg++;
+        auzoa_23router.ethg++ <--> Core200G <--> backbonerouter2.ethg++;
+        auzoa_16router.ethg++ <--> Core200G <--> backbonerouter2.ethg++;
 
         backbonerouter1.ethg++ <--> Core200G <--> backbonerouter2.ethg++;
 
@@ -520,4 +530,5 @@ network tszdk_praktika2
         dataCenterSwitch16.ethg++ <--> Core200G <--> dataCenterRouter16.ethg++;
         server2_16.ethg++ <--> Core200G <--> dataCenterSwitch16.ethg++;
         server1_16.ethg++ <--> Core200G <--> dataCenterSwitch16.ethg++;
+        //auzoa_5switch2.ethg++ <--> Core200G <--> auzoa_45AP.ethg++;
 }

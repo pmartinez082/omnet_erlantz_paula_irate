@@ -2,15 +2,13 @@
 # OMNeT++/OMNEST Makefile for tszdk_praktika31
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -KINET4_5_PROJ=../../../inet4.5 -DINET_IMPORT -L$$\(INET4_5_PROJ\)/src -lINET$$\(D\)
+#  opp_makemake -f --deep -KINET4_5_PROJ=/home/crash/Documents/1_Master/TSeZDeKudeaketa/omnetpp/projects/tszdk_lana_2_1/inet4.5 -DINET_IMPORT -L$$\(INET4_5_PROJ\)/src -lINET$$\(D\)
 #
 
 # Name of target to be created (-o option)
 TARGET_DIR = .
 TARGET_NAME = tszdk_praktika31$(D)
 TARGET = $(TARGET_NAME)$(EXE_SUFFIX)
-TARGET_IMPLIB = $(TARGET_NAME)$(IMPLIB_SUFFIX)
-TARGET_IMPDEF = $(TARGET_NAME)$(IMPDEF_SUFFIX)
 TARGET_FILES = $(TARGET_DIR)/$(TARGET)
 
 # User interface (uncomment one) (-u option)
@@ -25,7 +23,7 @@ INCLUDE_PATH =
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS = $(LDFLAG_LIBPATH)$(INET4_5_PROJ)/out/$(CONFIGNAME)/src/libINET.dlla
+LIBS = $(LDFLAG_LIBPATH)$(INET4_5_PROJ)/src  -lINET$(D)
 
 # Output directory
 PROJECT_OUTPUT_DIR = ../out
@@ -42,7 +40,7 @@ MSGFILES =
 SMFILES =
 
 # Other makefile variables (-K)
-INET4_5_PROJ=../../../inet4.5
+INET4_5_PROJ=/home/crash/Documents/1_Master/TSeZDeKudeaketa/omnetpp/projects/tszdk_lana_2_1/inet4.5
 
 #------------------------------------------------------------------------------
 
@@ -106,6 +104,7 @@ $O/$(TARGET): $(OBJS)  $(wildcard $(EXTRA_OBJS)) Makefile $(CONFIGFILE)
 
 # disabling all implicit rules
 .SUFFIXES :
+.PRECIOUS : %_m.h %_m.cc
 
 $O/%.o: %.cc $(COPTS_FILE) | msgheaders smheaders
 	@$(MKPATH) $(dir $@)
@@ -114,11 +113,11 @@ $O/%.o: %.cc $(COPTS_FILE) | msgheaders smheaders
 
 %_m.cc %_m.h: %.msg
 	$(qecho) MSGC: $<
-	$(Q)$(MSGC) -s _m.cc -MD -MP -MF $O/$(basename $<)_m.h.d $(MSGCOPTS) $?
+	$(Q)$(MSGC) -s _m.cc -MD -MP -MF $O/$(basename $<)_m.h.d $(MSGCOPTS) $<
 
 %_sm.cc %_sm.h: %.sm
 	$(qecho) SMC: $<
-	$(Q)$(SMC) -c++ -suffix cc $(SMCOPTS) $?
+	$(Q)$(SMC) -c++ -suffix cc $(SMCOPTS) $<
 
 msgheaders: $(MSGFILES:.msg=_m.h)
 
