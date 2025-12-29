@@ -13,8 +13,7 @@ import inet.node.wireless.AccessPoint;
 import inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import ned.IdealChannel;
 import inet.node.inet.AccessPoint;
-
-
+import inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 
 channel Eth100MLong extends Eth100M
 {
@@ -57,6 +56,11 @@ network tszdk_praktika2
     @display("bgb=8140,4360,#A6AADB;i=background/terrain;i2=status/;bgi=background/auzoak");
     types:
     submodules:
+
+		radioMedium: inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211ScalarRadioMedium {
+    		@display("p=150,400");
+		}
+		
 
         // =======================
         // Auzoa_16(DeustuAbando)
@@ -254,15 +258,15 @@ network tszdk_praktika2
             @display("p=2990.8613,2506.5115");
         }
 
-        //auzoa_45AP: AccessPoint {
-        //    @display("p=2206,2994");
-        //}
-        //auzoa_5wlan1host1: WirelessHost {
-        //    @display("p=2092,3226");
-        //}
-        //auzoa_5wlan1host2: WirelessHost {
-        //    @display("p=1889,3033");
-        //}
+        auzoa_45AP: inet.node.wireless.AccessPoint {
+            @display("p=2206,2994");
+        }
+        auzoa_5wlan1host1: inet.node.inet.WirelessHost {
+            @display("p=2092,3226");
+        }
+        auzoa_5wlan1host2: inet.node.inet.WirelessHost {
+            @display("p=1889,3033");
+        }
 
         // =======================
         // Auzoa_23 (UribarriOtxar)
@@ -335,9 +339,9 @@ network tszdk_praktika2
         // =======================
         // Backbone y Datacenter
         // =======================
-        radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=150,400");
-        }
+        //radioMedium: Ieee80211ScalarRadioMedium {
+        //    @display("p=150,400");
+        //}
         backbonerouter1: Router {
             @display("p=1356.18,2066.56;i=abstract/router2");
         }
@@ -475,6 +479,8 @@ network tszdk_praktika2
         auzoa_4switch2.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
         auzoa_4switch1.ethg++ <--> Core100G <--> auzoa_45router.ethg++;
 
+
+
         // =======================
         // Auzoa_23 (UribarriOtxar)
         // =======================
@@ -530,5 +536,5 @@ network tszdk_praktika2
         dataCenterSwitch16.ethg++ <--> Core200G <--> dataCenterRouter16.ethg++;
         server2_16.ethg++ <--> Core200G <--> dataCenterSwitch16.ethg++;
         server1_16.ethg++ <--> Core200G <--> dataCenterSwitch16.ethg++;
-        //auzoa_5switch2.ethg++ <--> Core200G <--> auzoa_45AP.ethg++;
+        auzoa_5switch2.ethg++ <--> Core200G <--> auzoa_45AP.ethg++;
 }
